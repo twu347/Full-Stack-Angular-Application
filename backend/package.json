@@ -1,0 +1,38 @@
+{
+  "name": "se3316-lab3-twu347",
+  "version": "1.0.0",
+  "description": "This is intended for se3316-lab3-twu347 repository ",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/twu347/se3316-lab3-twu347.git"
+  },
+  "author": "Tong Wu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/twu347/se3316-lab3-twu347/issues"
+  },
+  "homepage": "https://github.com/twu347/se3316-lab3-twu347#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "csv-parse": "^5.3.1",
+    "csv-parser": "^3.0.0",
+    "csvtojson": "^2.0.10",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "lowdb": "^5.0.5",
+    "mongodb": "^4.11.0",
+    "mongoose": "^6.7.1",
+    "multer": "^1.4.5-lts.1",
+    "string-similarity": "^4.0.4"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.20"
+  }
+}

@@ -1,0 +1,54 @@
+<!-- Top navigation -->
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a id = "homeBtn" class="navbar-brand col-sm-3 col-md-2 mr-0" routerLink="/admin">
+        Home
+    </a>
+</nav>
+<!-- Sidebar navigation -->
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active">
+                            <i class="fas fa-user"></i>User Profile
+                        </a>
+                    </li>
+                    <!-- Calling SignOut() Api from AuthService -->
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="authService.SignOut()">
+                            <i class="fas fa-sign-out-alt"></i>Log out
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://console.firebase.google.com/u/1/project/se3316-lab4-7f4c6/authentication/users" target="_blank">
+                            <i class="fas fa-sign-out-alt"></i>Get User
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Main content -->
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="inner-adjust">
+                <div class="pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">User Profile</h1>
+                </div>
+                <!-- Show user data when logged in -->
+                <div class="row" *ngIf="authService.userData as user">
+                    <div class="col-md-12">
+                                
+                            <div class="media-body">
+                                <p>User ID: <strong></strong></p>
+                                <p>Email: <strong>calvinxd254@gmail.com</strong></p>
+                                <p>Email Verified: <strong>true</strong></p>
+                                <p>Role: <strong> Admin</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           
+      
+

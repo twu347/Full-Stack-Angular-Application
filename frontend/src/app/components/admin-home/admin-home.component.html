@@ -1,0 +1,47 @@
+<body class="background">
+    <section class="hero is-primary is-medium">
+
+        <div class="hero-head">
+            <nav class="navbar">
+                <div class="container">
+                    <div id="navbarMenuHeroA" class="navbar-menu">
+
+                        <div class="navbar-end">
+                            <a class="navbar-item" routerLink = "/admin" id="homeBtn"> Home </a>
+                            <a class="navbar-item" routerLink = "/authorized-homepage" id="homeBtn"> Authorized Home </a>
+                            <a class="navbar-item" routerLink = "/main-page" id="homeBtn"> Main Page </a>
+                            <a class="navbar-item" routerLink="/admin-profile" id="homeBtn"> Profile </a>
+                            <a class="navbar-item" routerLink="/admin-policy" id="homeBtn"> Policy </a>
+                            
+                            <span class="navbar-item">
+                                <a class="button is-primary is-inverted" id="loginBtn" (click)="authService.SignOut()">
+                                    <span class="icon">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                    </span>
+                                    <span class="login">LogOut</span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title"> Music MetaBase </h1>
+                <p class="subtitle">
+                    A music metabase that are designed to let you search your favorite musics by the albums, tracks, and artist names
+                </p>
+            </div>
+        </div>
+
+        <div id="contentBlk" class="tile is-parent">
+            <article id="articleBlk" class="tile is-child notification is-danger">
+                <div class="content"></div>
+            </article>
+        </div>
+        
+    </section>
+</body>
+

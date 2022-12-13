@@ -1,0 +1,41 @@
+<div class="displayTable">
+    <div class="displayTableCell">
+        <div class="authBlock">
+            <h3>Sign Up</h3>
+           
+                <form class="formGroup" [formGroup] = "emailForm">
+                    <input type="email" formControlName = "email" class="formControl" placeholder="Email Address" #userEmail required/>
+                    <mat-error *ngIf = "email?.errors?.['required']" style="color:red;">
+                        Please Enter a Valid Email
+                    </mat-error>
+                </form>
+          
+                <form class="formGroup" [formGroup] = "passwordForm">
+                    <input type="password" formControlName = "password" class="formControl" placeholder="Password" #userPwd required minlength="7"/>
+                    <mat-error *ngIf = "password?.errors?.['required']" style="color:red;" >
+                        A Password is required (minimum 7 characters)
+                    </mat-error>
+                </form>
+            
+            <div class="formGroup">
+                <input type="button" class="btn btnPrimary" value="Sign Up"
+                    (click)="authService.SignUp(userEmail.value, userPwd.value)" />
+            </div>
+            <div class="formGroup">
+                <span class="or"><span class="orInner">Or</span></span>
+            </div>
+            
+            <div class="formGroup">
+                <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
+                    <i class="fab fa-google-plus-g"></i>
+                    Continue with Google
+                </button>
+            </div>
+        </div>
+        <div class="redirectToLogin">
+            <span>Already have an account?
+                <span class="redirect" routerLink="/signin">Log In</span></span>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,307 @@
+<body class="background">
+    <section class="hero is-primary is-medium">
+        <div class="hero-head">
+            <nav class="navbar">
+                <div class="container">
+
+                    <div id="navbarMenuHeroA" class="navbar-menu">
+                        <div class="navbar-end">
+                            <a class="navbar-item" routerLink="/authorized-homepage" id="homeBtn">
+                                Home
+                            </a>
+
+                            <a class="navbar-item" routerLink="/profile" id="homeBtn">
+                                Profile
+                            </a>
+
+                            <a class="navbar-item" routerLink="/privacy" id="homeBtn">
+                              Policy
+                            </a>
+
+                            <a class="navbar-item" routerLink="/admin-signin" id="homeBtn">
+                                Admin Dashboard
+                            </a>
+
+                            <span class="navbar-item">
+                                <a class="button is-primary is-inverted" id="loginBtn" (click)="authService.SignOut()">
+                                    <span class="icon">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                    </span>
+                                    <span class="login">LogOut</span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">
+                    Music MetaBase
+                </h1>
+                <p class="subtitle">
+                    A music metabase that are designed to let you search your favorite musics by the albums, tracks, and
+                    artist names
+                </p>
+            </div>
+        </div>
+
+        <div class="hero-foot">
+            <nav class="tabs">
+              <div class="container">
+                <ul>
+                  
+                  <!-- search by tracks -->
+                  <div class="field has-addons">
+                    <div class="control1">
+                      <input id ="searchBar" class="input" type="text" placeholder="Search by Track Title" [(ngModel)]="enteredValue3" ng-trim = "true">
+                    </div>
+                    <div class="control1">
+                      <input id="searchBar" class="input" type="text" placeholder="Search by Artists" [(ngModel)]="enteredValue" ng-trim = "true">
+                    </div>
+                    <div class="control1">
+                      <input id="searchBar" class="input" type="text" placeholder="Search by Album Title" [(ngModel)]="enteredValue2" ng-trim = "true">
+                    </div>
+                    <div class="control">
+                      <a class="button is-info" id="search" (click)="getTrack()">
+                        Search
+                      </ a>
+                    </div>
+                  </div>
+               
+                </ul>
+              </div>
+            </nav>
+          </div>
+          
+
+        <div id = "contentBlk" class="tile is-parent">
+            <article id = "articleBlk" class="tile is-child notification is-danger">
+
+                <div class="content">
+                    <table>
+                        <header style="font-size:20px; color: red; font-weight: bolder;">Play Lists</header>
+                        <li class = "contentList" *ngFor="let list of lists">
+                          <div>
+                           
+                            <div class="displayName" *ngIf="!isDetail">
+                              List Name: {{list.name}}
+                            </div>
+                            
+                            <div class="displayName" *ngIf="isDetail">
+                              <div>
+                                List Name: {{list.name}}
+                              </div>
+              
+                              <div>
+                                Track Titles: {{list.trackTitles}}
+                              </div>
+                            
+                              <div>
+                                Track IDs: {{list.trackIDs0}}
+                                         
+                              </div>
+                            
+                              <div>
+                                Descriptions: {{list.additionalDescriptions}}
+                              </div>
+                            
+                              <div>
+                                Comment: {{list.comment}}
+                                <h6>Rating: {{list.rating}}/10</h6>
+                              </div>
+                              <div>
+                               Creator: {{list.creator}}
+                              </div>
+
+                          </div>
+                         
+                            
+                          </div>
+        
+                          <div class="playControl" *ngIf="isDetail">
+                            <a class="button is-info" id="playBtn" href="https://www.youtube.com/results?search_query={{list.name}}+{{list.trackIDs}}{{list.trackTitles}}" target="_blank">
+                              <p id = "play">Play</p>
+                            </a>
+
+                          </div>
+                      </li>
+                            
+                          </table>
+                          <button type="button" (click)="showList()">
+                            {{ isDetail ? 'Read Less': 'Read More' }}
+                          </button>
+
+                          <div *ngIf="!listStatus">
+                                <li *ngFor="let tracky of trackedID">
+                                    <div *ngFor="let trackyy of tracky">
+                                        {{trackyy.track_title}}
+                                    </div>
+                                </li>
+                        </div>
+                </div>
+            </article>
+        </div>
+
+        <div id = "contentBk" class="tile is-parent">
+            <article id = "articleBlk" class="tile is-child notification is-danger">
+
+                <div class="content">
+                    <table>
+                        <header style="font-size:20px; color: red; font-weight: bolder;">Search Result</header>
+                        <li class="contentList" *ngFor="let track of tracks">
+                          <div class='displayName' *ngIf="!isReadMore">
+                            {{track.track_title}}, {{track.artist_name}}
+                          </div>
+                        
+                          <div class='displayName' *ngIf="isReadMore">
+                            <div>
+                              Track Title: {{track.track_title}}
+                            </div>
+
+                            <div>
+                              Artist Name: {{track.artist_name}}
+                            </div>
+
+                            <div>
+                              Album Title: {{track.album_title}}
+                            </div>
+
+                            <div>
+                              Track Date: {{track.track_date_created}}
+                            </div>
+
+                            <div>
+                              Track IDs: {{track.track_id}}
+                            </div>
+                            <div>
+                              Track Durations: {{track.track_duration}}
+                            </div>
+
+                            <div class="playControl">
+                              <a class="button is-info" id="playBtn" href="https://www.youtube.com/results?search_query={{track.track_title}}+{{track.artist_name}}+{{track.album_title}}," target="_blank">
+                                Play
+                              </a>
+                            </div>
+                            
+                          </div>
+                        
+                        
+                          <button type="button" (click)="showText()">
+                            {{ isReadMore ? 'Read Less': 'Read More' }}
+                          </button>
+                        </li>
+                    
+                    </table>
+                      
+                </div>
+            </article>
+        </div>
+
+        <div id="listCreated">
+            Create a playlist here:
+            <br>
+
+            <div>
+              Playlist name: <input type="text" placeholder="enter playlist name" id="newListName" [(ngModel)]="newListName">
+            </div>
+            
+            <div>
+              Track IDs: 
+              <input type="text" placeholder="Track1" id="newListTrackID" [(ngModel)]="ids0">
+              <input type="text" placeholder = "Track2" id="newListTrackID" [(ngModel)]="ids1">
+              <input type="text" placeholder = "Track3" id="newListTrackID" [(ngModel)]="ids2">
+            </div>
+
+            <div>
+              Track Titles: 
+              <input type="text" placeholder="separate by comma" id="newListTrackID" [(ngModel)]="title">
+            </div>
+            
+            <div>
+              Add Descriptions:
+              <input type="text" placeholder="provide more information" id="newListTrackID" [(ngModel)]="addDescription">
+              
+              Add Creator:
+              <input type="text" placeholder="provide more information" id="newListTrackID" [(ngModel)]="addCreator">
+
+              <button id="newListButton" (click)="createList()">Create</button>
+            </div>
+            
+            <br>
+            <br>
+            Search a playlist here:
+            <br>
+            Input playlist name: <input type="text" placeholder="enter playlist name" id="getListByName">
+            
+            <button id="getListButton">Search</button>
+        
+            <br>
+            <br>
+        
+            Update a playlist here:
+            <br>
+            <div>
+              Update Playlist name: <input type="text" placeholder="enter playlist name" id="oldListName" [(ngModel)]="updateListName">
+            </div>
+          
+            <div>
+              Update Track ids: 
+              <input type="text" placeholder="separate by comma" id="oldListTrackID" [(ngModel)]="updateNewIDs">
+              <input type="text" placeholder="separate by comma" id="oldListTrackID" [(ngModel)]="updateNewIDs1">
+              <input type="text" placeholder="separate by comma" id="oldListTrackID" [(ngModel)]="updateNewIDs2">
+              <input type="text" placeholder="separate by comma" id="oldListTrackID" [(ngModel)]="updateNewIDs3">
+            </div>
+
+            <div>
+              Update Track Titles:
+              <input type="text" placeholder="separate by comma" id="oldListTrackID" [(ngModel)]="updateNewTitles">
+            </div>
+
+            <div>
+              Update Descriptions:
+              <input type="text" placeholder="add more descriptions" id="oldListTrackID" [(ngModel)]="updateNewDescriptions">
+            </div>
+
+            <button id="updateListButton" (click)="updateList()">Update</button>
+            
+        
+            <br>
+            <br>
+            Delete a playlist and its content here:
+            <br>
+
+            <div>
+              Playlist name: <input type="text" placeholder="enter playlist name" id="deleteListName" [(ngModel)]="deleteListName">
+              <button id="deleteList" (click)="deleteList()">Delete</button>
+              Delete TrackIDs: 
+              <input type="text" placeholder="enter playlist name" id="deleteListName" [(ngModel)]="deleteIDs">
+              <button id="deleteList" (click)="deleteTracksIDs()">Delete</button>
+            </div>
+
+            <br>
+            <br>
+
+            Choose a PlayList to add a comment and rating:
+            <div>
+              Playlist name: <input type="text" placeholder="enter playlist name" id="commentListName" [(ngModel)]="commentListName">
+            </div>
+
+            <div>
+              Add a Comment: <input type="text" placeholder="Add comment..." id="deleteListName" [(ngModel)]=" addComment">
+            </div>
+
+            <div>
+              Add a Rating to the Lists: <input type="number" placeholder="Add Rating..." id="deleteListName" [(ngModel)]=" addRating" min="0" max="10" onkeydown="return false">
+              <button id="deleteList" (click)="postCommentAndRatings()">Submit</button>
+            </div>
+            
+        
+        </div>
+
+        
+    
+    </section>
+</body>

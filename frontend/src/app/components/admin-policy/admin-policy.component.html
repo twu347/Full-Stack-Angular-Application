@@ -1,0 +1,88 @@
+<div id="listCreated">
+
+    Create a policy of Privacy:
+    <br>
+    Title: <input type="text" placeholder="enter title" id="newListName" [(ngModel)]="createPrivacyTitle">
+    Content: <input type="text" placeholder="Enter Content" id='' [(ngModel)]="createPrivacyContent">
+    <button id="newListButton" (click)="createPrivacy()">Create</button>
+
+    <br>
+    <br>
+    Create a policy of DMCA:
+    <br>
+    Title: <input type="text" placeholder="enter title" id="newListName" [(ngModel)]="createDMCATitle">
+    Content: <input type="text" placeholder="Enter Content" id='' [(ngModel)]="createDMCAContent">
+    <button id="newListButton" (click)="createDMCA()">Create</button>
+
+    <br>
+    <br>
+
+    Create a policy of Accept:
+    <br>
+    Title: <input type="text" placeholder="enter title" id="newListName" [(ngModel)]="createAcceptTitle">
+    Content: <input type="text" placeholder="Enter Content" id='' [(ngModel)]="createAcceptContent">
+    <button id="newListButton" (click)="createAccept()">Create</button>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    Update a Policy of Privacy:
+    <br>
+    ID: <input type="text" placeholder="enter ID" id="oldListName" [(ngModel)]="updatePrivacyID">
+    Title: <input type="text" placeholder="enter title" id="oldListTrackID" [(ngModel)]="updatePrivacyTitle">
+    Content: <input type="text" placeholder="enter content" id="oldListTrackID" [(ngModel)]="updatePrivacyContent">
+    <button id="updateListButton" (click)="updatePrivacy()">Update</button>
+
+    <br>
+    <br>
+
+    Update a Policy of DMCA:
+    <br>
+    ID: <input type="text" placeholder="enter ID" id="oldListName" [(ngModel)]="updateDMCAID">
+    Title: <input type="text" placeholder="enter title" id="oldListTrackID" [(ngModel)]="updateDMCATitle">
+    Content: <input type="text" placeholder="enter content" id="oldListTrackID" [(ngModel)]="updateDMCAContent">
+    <button id="updateListButton" (click)="updateDMCA()">Update</button>
+
+    <br>
+    <br>
+
+    Update a Policy of Accept:
+    <br>
+    ID: <input type="text" placeholder="enter ID" id="oldListName" [(ngModel)]="updateAcceptID">
+    Title: <input type="text" placeholder="enter title" id="oldListTrackID" [(ngModel)]="updateAcceptTitle">
+    Content: <input type="text" placeholder="enter content" id="oldListTrackID" [(ngModel)]="updateAcceptContent">
+    <button id="updateListButton" (click)="updateAccept()">Update</button>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    Delete Privacy here:
+    <br>
+    Title: <input type="text" placeholder="enter Title" id="deleteListName" [(ngModel)]="deletePrivacyTitle">
+    <button id="deleteList" (click)="deletePrivacy()">Delete</button>
+
+    <br>
+    <br>
+
+
+    Delete DMCA here:
+    <br>
+    Title: <input type="text" placeholder="enter Title" id="deleteListName" [(ngModel)]="deleteDMCATitle">
+    <button id="deleteList" (click)="deleteDMCA()">Delete</button>
+
+    <br>
+    <br>
+
+    Delete Accept here:
+    <br>
+    Title: <input type="text" placeholder="enter Title" id="deleteListName" [(ngModel)]="deleteAcceptTitle">
+    <button id="deleteList" (click)="deleteAccept()">Delete</button>
+
+    <br>
+    <br>
+
+</div>

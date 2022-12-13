@@ -1,0 +1,31 @@
+<div class="displayTable">
+    <div class="displayTableCell">
+        <div class="authBlock">
+            <h3>Admin Sign In</h3>
+            <div class="formGroup" [formGroup]="emailForm">
+                <input id = "username" type="text" formControlName="email" class="formControl" placeholder="Username" #userName required />
+                <mat-error *ngIf="email?.errors?.['required']" style="color:red;">
+                    Please Enter a Valid Email
+                </mat-error>
+            </div>
+
+            <div class="formGroup">
+                <input id = "password" type="password" class="formControl" placeholder="Password" #userPassword required />
+            </div>
+
+            <!-- Calling SignIn Api from AuthService -->
+            <div class="formGroup">
+                <input type="button" class="btn btnPrimary" value="Log in"
+                    (click)="Login()" (click) = "authService.SignIn(userName.value, userPassword.value)"/>
+            </div>
+
+
+            <div class="forgotPassword">
+                <span routerLink="/main-page">Home</span>
+            </div>
+        
+        </div>
+
+    </div>
+</div>
+

@@ -1,0 +1,50 @@
+<div class="tabs">
+    <ul>
+        <li class="is-active"></li>
+        <li><a (click)="getPrivacy()" (click)="showPrivacy()">Security and Privacy Policy</a></li>
+        <li><a (click)="getAccepts()" (click)="showPolicy()">Acceptable Use Policy (AUP)</a></li>
+        <li><a (click)="getDMCAs()" (click)="showDMCA()">DMCA Notice & TakeDown Policy</a></li>
+        <li><a routerLink="/authorized-homepage">Home</a></li>
+    </ul>
+</div>
+<table class = "privacyTable" *ngIf="showPrivacies">
+    <div *ngFor="let privacies of privacy">
+        <br>
+        <h1 class="title" id='privacyTitle'>
+            {{privacies.title}}
+        </h1>
+        
+        <p>
+            {{privacies.content}}
+        </p>
+
+    </div>
+</table>
+
+<table  class = "privacyTable" *ngIf="showPolicies">
+    <div *ngFor="let accept of accepts">
+        <br>
+        <h1 class="title" id='privacyTitle'>
+            {{accept.title}}
+        </h1>
+
+        <p>
+            {{accept.content}}
+        </p>
+
+    </div>
+</table>
+
+<table class="privacyTable" *ngIf="showDMCAs">
+    <div *ngFor="let dmca of dmcas">
+        <br>
+        <h1 class="title" id='privacyTitle'>
+            {{dmca.title}}
+        </h1>
+
+        <p>
+            {{dmca.content}}
+        </p>
+
+    </div>
+</table>
